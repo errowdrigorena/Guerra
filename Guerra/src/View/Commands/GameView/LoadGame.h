@@ -25,9 +25,6 @@ public:
 
 	void execute() override;
 	std::string get_description() override;
-
-private:
-	controllers::Table_controller table_controller_;
 };
 
 } /* namespace commands */

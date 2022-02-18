@@ -14,7 +14,6 @@ namespace controllers {
 class Table_controller
 {
 public:
-	Table_controller() = default;
 	Table_controller(std::vector<std::string> player_names,
 			std::string deck_name);
 	virtual ~Table_controller();

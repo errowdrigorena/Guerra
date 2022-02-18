@@ -41,4 +41,8 @@ add_executable(Guerra ./src/Guerra.cpp
 	./src/View/Commands/GameView/NewGame.h
 	./src/View/Commands/GameView/NewGame.cc
 	./src/View/Commands/GameView/LoadGame.h
-	./src/View/Commands/GameView/LoadGame.cc)
+	./src/View/Commands/GameView/LoadGame.cc
+	./src/View/Commands/GameView/SaveGame.h
+	./src/View/Commands/GameView/SaveGame.cc
+	./src/View/Commands/GameView/PlayRound.h
+	./src/View/Commands/GameView/PlayRound.cc)

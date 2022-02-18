@@ -16,7 +16,6 @@ namespace commands {
 class New_game : public Command
 {
 public:
-	//this constructor ask for player names and deck model.
 	New_game();
 	virtual ~New_game();
 	New_game& operator=(New_game &&other);
@@ -26,9 +25,6 @@ public:
 
 	void execute() override;
 	std::string get_description() override;
-
-private:
-	controllers::Table_controller table_controller_;
 };
 
 } /* namespace commands */

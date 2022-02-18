@@ -8,11 +8,15 @@
 #include "NewGame.h"
 
 #include <iostream>
+#include <memory>
 #include <vector>
 
 #include "../../../JSON/JSONOperations.h"
 #include "../../../Common/Paths.h"
 #include "../../LoopManagement.h"
+#include "../../View.h"
+#include "PlayRound.h"
+#include "SaveGame.h"
 
 namespace
 {
@@ -34,7 +38,7 @@ std::vector<std::string> name_players(unsigned short number_players)
 
 std::string chose_deck()
 {
-	std::cout << "Elija modelo de baraja " << i+1 << std::endl;
+	std::cout << "Elija modelo de baraja " << std::endl;
 	auto decks_options = json::get_decks_in_json_file(decks_info_path);
 	decks_options.push_back("salir");
 
@@ -48,7 +52,7 @@ std::string chose_deck()
 namespace view {
 namespace commands {
 
-New_game::New_game() : table_controller_{}
+New_game::New_game()
 {
 
 }
@@ -65,8 +69,12 @@ void New_game::execute()
 
 	auto chosen_deck = chose_deck();
 
-	controllers::Table_controller movable{player_names, chosen_deck};
-	table_controller_ = std::move(movable);
+	auto table_controller_shared =
+			std::make_shared<controllers::Table_controller>(player_names, chosen_deck);
+	View game_console{std::make_shared<Play_round>(table_controller_shared),
+		std::make_shared<Save_game>(table_controller_shared) };
+
+	option_loop(std::move(game_console) );
 }
 
 std::string New_game::get_description()
