@@ -12,7 +12,9 @@
 #include <vector>
 #include <string>
 #include <boost/property_tree/json_parser.hpp>
+#include <map>
 
+#include "../Card/Card.h"
 #include "../Common/Types.h"
 
 namespace fs = std::filesystem;
@@ -44,7 +46,14 @@ std::vector<std::string> get_decks_in_json_file(const fs::path file_path);
 bool erase_deck_in_json_file(const fs::path file_path,
 		const std::string deck_name);
 
+std::vector<card::Card> load_card_deck_from_file(const fs::path file_path,
+		const std::string deck_name);
 
+std::map<unsigned int, std::string> load_colour_dictionary_from_file
+	(const fs::path file_path, const std::string deck_name);
+
+std::map<unsigned int, std::string> load_values_dictionary_from_file
+	(const fs::path file_path, const std::string deck_name);
 }
 
 #endif /* JSON_JSONOPERATIONS_H_ */

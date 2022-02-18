@@ -33,10 +33,6 @@ std::vector<T> ask_multiple_values
 template<typename T>
 void check_number(const std::string& warning, T& number);
 
-unsigned short ask_number(const std::string& question);
-
-std::string ask_string(const std::string& question);
-
 std::vector<std::string> ask_multiple_strings
 				(const std::string& question, unsigned short& number_strings);
 
@@ -90,7 +86,7 @@ void check_number(const std::string& warning, T& number)
 	{
 	    std::cin.clear();
 	    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	    number = ask_number(warning);
+	    number = ask_value<T>(warning);
 	}
 }
 

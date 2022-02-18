@@ -9,9 +9,10 @@
 
 namespace controllers {
 
-Table_controller::Table_controller() {
+Table_controller::Table_controller(std::vector<std::string> player_names,
+		std::string deck_name) : table_model_{player_names, deck_name}
+{
 	// TODO Auto-generated constructor stub
-
 }
 
 Table_controller::~Table_controller() {

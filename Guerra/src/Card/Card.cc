@@ -7,12 +7,38 @@
 
 #include "Card.h"
 
-Card::Card() {
-	// TODO Auto-generated constructor stub
+namespace card
+{
 
+Card::Card(unsigned int colour, unsigned int value) : colour_id_{colour },
+		value_{value }
+{
+	; //do nothing
 }
 
-Card::~Card() {
+Card::~Card()
+{
 	// TODO Auto-generated destructor stub
 }
 
+bool operator > (const Card& lho, const Card& rho)
+{
+	return lho.value_ > rho.value_;
+}
+
+bool operator < (const Card& lho, const Card& rho)
+{
+	return lho.value_ < rho.value_;
+}
+
+bool operator == (const Card& lho, const Card& rho)
+{
+	return lho.value_ == rho.value_;
+}
+
+bool operator != (const Card& lho, const Card& rho)
+{
+	return !( lho == rho );
+}
+
+}

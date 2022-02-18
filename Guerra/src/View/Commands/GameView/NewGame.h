@@ -16,6 +16,7 @@ namespace commands {
 class New_game : public Command
 {
 public:
+	//this constructor ask for player names and deck model.
 	New_game();
 	virtual ~New_game();
 	New_game& operator=(New_game &&other);

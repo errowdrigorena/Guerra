@@ -22,11 +22,24 @@ int main(int argc, char **argv) {
 	//auto b = ask_value2<short>(q);
 
 	//view::deck_design::create_design();
-	auto path_navigator = fs::current_path()/"Decks"/"Decks_info.info";
+	auto path_navigator = fs::current_path()/"Decks"/"Decks_info.json";
 	auto options = json::get_decks_in_json_file(path_navigator);
-	json::erase_deck_in_json_file(path_navigator, "X");
-	json::erase_deck_in_json_file(path_navigator, "a");
+	std::string deck_name{"New Deck"};
+	json::load_card_deck_from_file(path_navigator, deck_name);
 
+	auto dic = json::load_colour_dictionary_from_file(path_navigator, deck_name);
+
+	for( auto colour : dic)
+	{
+		cout << colour.second << "-->" << colour.first << endl;
+	}
+
+	auto vals = json::load_values_dictionary_from_file(path_navigator, deck_name);
+
+	for( auto val : vals)
+	{
+		cout << val.second << "-->" << val.first << endl;
+	}
 	view::View main_view{std::make_shared<Deck_designer_starter>(),
 		std::make_shared<Game_starter>()};
 	//view::Start_view main_view{};

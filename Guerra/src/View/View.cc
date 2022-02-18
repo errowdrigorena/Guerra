@@ -30,7 +30,7 @@ void View::execute_option(int option)
 {
 	if(option == options_.size())
 	{
-		std::cout << "La aplicación procederá a cerrarse" << std::endl;
+		std::cout << "Esta pantalla procede a cerrarse" << std::endl;
 		exit_ = true;
 	}
 	else

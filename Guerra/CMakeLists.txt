@@ -18,6 +18,10 @@ add_executable(Guerra ./src/Guerra.cpp
 	./src/Deck/DeckModel.cc
 	./src/Table/Table.h
 	./src/Table/Table.cc
+	./src/Table/Players/Player.h
+	./src/Table/Players/Player.cc
+	./src/Card/Card.h
+	./src/Card/Card.cc
 	./src/View/InterfaceOperations.h 
 	./src/View/InterfaceOperations.cc
 	./src/View/View.h

@@ -7,6 +7,11 @@
 
 #include "GameStarter.h"
 
+#include "../../LoopManagement.h"
+#include "../../View.h"
+#include "../GameView/LoadGame.h"
+#include "../GameView/NewGame.h"
+
 namespace view {
 namespace commands {
 
@@ -21,7 +26,8 @@ Game_starter::~Game_starter() {
 
 void Game_starter::execute()
 {
-	//do nothing;
+	View game_console{std::make_shared<New_game>(), std::make_shared<Load_game>() };
+	option_loop(std::move(game_console) );
 }
 
 std::string Game_starter::get_description()

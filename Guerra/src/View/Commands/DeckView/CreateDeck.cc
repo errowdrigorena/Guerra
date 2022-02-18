@@ -34,7 +34,7 @@ Possible_colours create_colours()
 Possible_values create_values()
 {
 	std::string ask_number_of_values{"¿Cuántas cartas va a tener cada palo?" };
-	auto number_of_values = operations::ask_number(ask_number_of_values);
+	auto number_of_values = operations::ask_value<int>(ask_number_of_values);
 
 	std::string check_question
 		{"Introduzca un número de cartas superior a 0 (numérico)" };

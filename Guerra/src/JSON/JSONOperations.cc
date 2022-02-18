@@ -5,6 +5,7 @@
  *      Author: iban
  */
 #include "JSONOperations.h"
+#include "../Card/Card.h"
 
 #include <iostream>
 #include <fstream>
@@ -13,6 +14,9 @@
 
 using mdvc = Manage_deckname_values_colours;
 Tag_value from_name_value_to_tag_value(Value_name transformable);
+std::map<unsigned int, std::string> load_dictionary_from_file
+	(const fs::path file_path, const std::string deck_name,
+	 const std::string of_what);
 
 namespace json
 {
@@ -161,10 +165,64 @@ bool erase_deck_in_json_file(const fs::path file_path,
 	return correct;
 }
 
+std::vector<card::Card> load_card_deck_from_file(const fs::path file_path,
+		const std::string deck_name)
+{
+	auto json_file = create_json_from_file(file_path);
+	auto json_deck = json_file.get_child(deck_name);
+
+	std::vector<card::Card> card_deck{};
+	for (const auto &value : json_deck.get_child("Values"))
+	{
+		for (const auto &colour : json_deck.get_child("Colours"))
+		{
+			unsigned int colour_id  = std::stoul( colour.second.data() );
+			unsigned int value_id = std::stoul( value.second.data() );
+
+			card::Card insertable{colour_id, value_id};
+			//card_deck.push_back(insertable);
+		}
+	}
+
+	return{};
+}
+
+std::map<unsigned int, std::string> load_colour_dictionary_from_file
+	(const fs::path file_path, const std::string deck_name)
+{
+	auto dictionary = load_dictionary_from_file(file_path, deck_name, "Colours");
+	return dictionary;
+}
+
+std::map<unsigned int, std::string> load_values_dictionary_from_file
+	(const fs::path file_path, const std::string deck_name)
+{
+	auto dictionary = load_dictionary_from_file(file_path, deck_name, "Values");
+	return dictionary;
+}
+
 } //namespace json ends
 
 Tag_value from_name_value_to_tag_value(Value_name transformable)
 {
 
 	return{transformable.second, transformable.first};
+}
+
+std::map<unsigned int, std::string> load_dictionary_from_file
+	(const fs::path file_path, const std::string deck_name,
+	 const std::string of_what)
+{
+	auto json_file = json::create_json_from_file(file_path);
+	auto json_deck = json_file.get_child(deck_name);
+
+	std::map<unsigned int, std::string> dictionary;
+
+	for (const auto &colour : json_deck.get_child(of_what) )
+	{
+		unsigned int key = std::stoul( colour.second.data() );
+		dictionary[key] = colour.first.data();
+	}
+
+	return dictionary;
 }
