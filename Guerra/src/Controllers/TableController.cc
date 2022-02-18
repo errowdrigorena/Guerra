@@ -19,4 +19,14 @@ Table_controller::~Table_controller() {
 	// TODO Auto-generated destructor stub
 }
 
+void Table_controller::shuffle_deck()
+{
+	table_model_.shuffle_deck();
+}
+
+void deal()
+{
+
+}
+
 } /* namespace controllers */

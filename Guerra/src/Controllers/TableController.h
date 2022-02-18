@@ -21,6 +21,10 @@ public:
 	Table_controller(Table_controller &&other) = default;
 	Table_controller& operator=(const Table_controller &other) = default;
 	Table_controller& operator=(Table_controller &&other) = default;
+
+	void shuffle_deck();
+
+	void deal();
 private:
 	table::Table table_model_;
 };

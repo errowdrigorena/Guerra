@@ -28,7 +28,6 @@ namespace table
 class Table
 {
 public:
-	Table() = default;
 	Table(std::vector<std::string> player_names, std::string deck_name);
 	virtual ~Table();
 	Table(const Table &other) = default;
@@ -36,11 +35,17 @@ public:
 	Table& operator=(const Table &other) = default;
 	Table& operator=(Table &&other) = default;
 
+	void shuffle_deck();
+
+	void deal_cards();
+
+	std::string get_last_round_result() const;
 private:
 	std::array<Player, number_players> players_;
 	Deck deck_;
 	Id_colour id_color_;
 	Value_cardname value_name_;
+	std::string last_round_result_;
 };
 
 }

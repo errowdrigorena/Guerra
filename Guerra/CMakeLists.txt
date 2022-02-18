@@ -22,6 +22,17 @@ add_executable(Guerra ./src/Guerra.cpp
 	./src/Table/Players/Player.cc
 	./src/Card/Card.h
 	./src/Card/Card.cc
+	./src/States/GameState.h
+	./src/States/GameTrigger.h
+	./src/States/StateOfGame.h
+	./src/States/DealState.h
+	./src/States/DealState.cc
+	./src/States/DrawState.h
+	./src/States/DrawState.cc
+	./src/States/EndGameState.h
+	./src/States/EndGameState.cc
+	./src/States/RoundState.h
+	./src/States/RoundState.cc			
 	./src/View/InterfaceOperations.h 
 	./src/View/InterfaceOperations.cc
 	./src/View/View.h
