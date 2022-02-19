@@ -32,7 +32,7 @@ void Game_starter::execute()
 
 std::string Game_starter::get_description()
 {
-	return "Nueva partida";
+	return "Jugar partida";
 }
 
 } /* namespace commands */

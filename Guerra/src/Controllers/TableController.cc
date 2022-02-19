@@ -10,23 +10,23 @@
 namespace controllers {
 
 Table_controller::Table_controller(std::vector<std::string> player_names,
-		std::string deck_name) : table_model_{player_names, deck_name}
+		std::string deck_name) : state_machine_{ table::Table{player_names, deck_name} }
 {
-	// TODO Auto-generated constructor stub
+	;//do nothing
 }
 
-Table_controller::~Table_controller() {
-	// TODO Auto-generated destructor stub
-}
-
-void Table_controller::shuffle_deck()
+Table_controller::~Table_controller()
 {
-	table_model_.shuffle_deck();
+	;//do nothing
 }
 
-void deal()
+void Table_controller::perform_game_state()
 {
-
+	state_machine_.interact_with_table();
 }
 
+std::string Table_controller::get_round_info()
+{
+	return state_machine_.get_round_info();
+}
 } /* namespace controllers */

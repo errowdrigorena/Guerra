@@ -21,7 +21,8 @@ Draw_state::~Draw_state()
 
 void Draw_state::execute(table::Table& table_model)
 {
-	; //in implementatios
+	table_model.perform_draw();
+	set_trigger(Game_trigger::Draw_happened);
 }
 
 } /* namespace states */

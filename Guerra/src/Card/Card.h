@@ -26,6 +26,9 @@ public:
 	friend bool operator == (const Card& lho, const Card& rho);
 	friend bool operator != (const Card& lho, const Card& rho);
 
+	unsigned int get_colour() const {return colour_id_;}
+	unsigned int get_value() const {return value_;}
+
 private:
 	unsigned int colour_id_;
 	unsigned int value_;

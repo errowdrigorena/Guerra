@@ -7,6 +7,7 @@
 
 #ifndef CONTROLLERS_TABLECONTROLLER_H_
 #define CONTROLLERS_TABLECONTROLLER_H_
+#include "../States/GameStatesHandler.h"
 #include "../Table/Table.h"
 
 namespace controllers {
@@ -22,11 +23,11 @@ public:
 	Table_controller& operator=(const Table_controller &other) = default;
 	Table_controller& operator=(Table_controller &&other) = default;
 
-	void shuffle_deck();
+	void perform_game_state();
+	std::string get_round_info();
 
-	void deal();
 private:
-	table::Table table_model_;
+	states::Game_states_handler state_machine_;
 };
 
 } /* namespace controllers */

@@ -4,7 +4,7 @@ project (Guerra)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Guerra ./src/Guerra.cpp
+add_executable(Guerra ./src/Guerra.cc
 	./src/Common/Types.h  
 	./src/Common/Command.h
 	./src/Common/Paths.h
@@ -32,7 +32,9 @@ add_executable(Guerra ./src/Guerra.cpp
 	./src/States/EndGameState.h
 	./src/States/EndGameState.cc
 	./src/States/RoundState.h
-	./src/States/RoundState.cc			
+	./src/States/RoundState.cc
+	./src/States/GameStatesHandler.h
+	./src/States/GameStatesHandler.cc			
 	./src/View/InterfaceOperations.h 
 	./src/View/InterfaceOperations.cc
 	./src/View/View.h

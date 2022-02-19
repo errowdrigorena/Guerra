@@ -30,6 +30,7 @@ public:
 
 	unsigned short get_id() const;
 	std::string get_name() const;
+	std::size_t get_number_cards() const;
 
 	void provide_cards(const Table_deck& table_deck_chunk);
 

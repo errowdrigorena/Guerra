@@ -23,9 +23,15 @@ unsigned short Player::get_id() const
 {
 	return id_;
 }
+
 std::string Player::get_name() const
 {
 	return name_;
+}
+
+std::size_t Player::get_number_cards() const
+{
+	return deck_.size();
 }
 
 void Player::provide_cards(const Table_deck& table_deck_chunk)

@@ -180,11 +180,11 @@ std::vector<card::Card> load_card_deck_from_file(const fs::path file_path,
 			unsigned int value_id = std::stoul( value.second.data() );
 
 			card::Card insertable{colour_id, value_id};
-			//card_deck.push_back(insertable);
+			card_deck.push_back(insertable);
 		}
 	}
 
-	return{};
+	return card_deck;
 }
 
 std::map<unsigned int, std::string> load_colour_dictionary_from_file

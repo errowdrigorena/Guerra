@@ -7,6 +7,8 @@
 
 #include "PlayRound.h"
 
+#include <iostream>
+
 namespace view {
 namespace commands {
 
@@ -23,7 +25,8 @@ Play_round::~Play_round()
 
 void Play_round::execute()
 {
-	; //sin implementar
+	table_controller_->perform_game_state();
+	std::cout << table_controller_->get_round_info() << std::endl;
 }
 
 std::string Play_round::get_description()

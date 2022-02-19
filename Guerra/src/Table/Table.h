@@ -24,6 +24,8 @@ using Value_cardname = std::map<unsigned int, std::string>; //translator
 
 namespace table
 {
+enum class Round_result{Draw, Winner, Game_over};
+enum class Who_can_play{Everyone, None, Someone};
 
 class Table
 {
@@ -39,13 +41,25 @@ public:
 
 	void deal_cards();
 
+	Round_result perform_round(); //play game
+
+	void perform_draw();
+
 	std::string get_last_round_result() const;
 private:
+	std::string notate_round(const std::map<std::string, card::Card> &round,
+			const std::pair<std::string, card::Card> &winner,
+			const Round_result &result);
+	void give_regard_to_winner(const std::string& winner);
+	bool check_if_someone_wins();
+	Who_can_play arrange_someone_cant_play();
+
 	std::array<Player, number_players> players_;
 	Deck deck_;
-	Id_colour id_color_;
+	Id_colour id_colour_;
 	Value_cardname value_name_;
 	std::string last_round_result_;
+	const std::size_t total_card_number_;
 };
 
 }

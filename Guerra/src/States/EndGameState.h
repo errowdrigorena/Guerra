@@ -12,15 +12,15 @@
 namespace states
 {
 
-class End_game_status : public State_of_game
+class End_game_state : public State_of_game
 {
 public:
-	End_game_status();
-	virtual ~End_game_status();
-	End_game_status(const End_game_status &other) = default;
-	End_game_status(End_game_status &&other) = default;
-	End_game_status& operator=(const End_game_status &other) = default;
-	End_game_status& operator=(End_game_status &&other) = default;
+	End_game_state();
+	virtual ~End_game_state();
+	End_game_state(const End_game_state &other) = default;
+	End_game_state(End_game_state &&other) = default;
+	End_game_state& operator=(const End_game_state &other) = default;
+	End_game_state& operator=(End_game_state &&other) = default;
 
 	void execute(table::Table& table_model) override;
 };
