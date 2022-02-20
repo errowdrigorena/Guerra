@@ -8,7 +8,8 @@
 #ifndef VIEW_COMMANDS_GAMEVIEW_LOADGAME_H_
 #define VIEW_COMMANDS_GAMEVIEW_LOADGAME_H_
 #include "../../../Common/Command.h"
-#include "../../../Controllers/TableController.h"
+#include "../../../Controllers/DeckDesignController.h"
+#include "../../../Controllers/SaveGamesController.h"
 
 namespace view {
 namespace commands {
@@ -25,6 +26,11 @@ public:
 
 	void execute() override;
 	std::string get_description() override;
+
+private:
+	controllers::Save_games_controller saved_games_controller_;
+	controllers::Deck_design_controller design_controller_;
+
 };
 
 } /* namespace commands */

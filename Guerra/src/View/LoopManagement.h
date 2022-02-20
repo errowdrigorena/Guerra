@@ -25,4 +25,6 @@ void option_loop(View option_view)
 
 std::string option_selector(std::vector<std::string> options);
 
+std::string option_management(std::vector<std::string> options, std::string tip);
+
 #endif /* COMMON_LOOP_MANAGEMENT_H_ */

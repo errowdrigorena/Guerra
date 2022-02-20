@@ -15,6 +15,11 @@ Table_controller::Table_controller(std::vector<std::string> player_names,
 	;//do nothing
 }
 
+Table_controller::Table_controller(table::Table table) : state_machine_{table }
+{
+	;//do nothing
+}
+
 Table_controller::~Table_controller()
 {
 	;//do nothing

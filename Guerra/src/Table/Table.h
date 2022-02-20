@@ -31,7 +31,9 @@ enum class Who_can_play{Everyone, None, Someone};
 class Table
 {
 public:
-	Table(std::vector<std::string> player_names, std::string deck_name);
+	Table(std::vector<std::string> player_names, std::string deck_model);
+	Table(std::array<Player, number_players> players, Deck cards_in_table,
+			std::string deck_model);
 	virtual ~Table();
 	Table(const Table &other) = default;
 	Table(Table &&other) = default;

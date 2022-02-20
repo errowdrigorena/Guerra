@@ -84,6 +84,15 @@ Table::Table(std::vector<std::string> player_names, std::string deck_model) :
 	; //do nothing
 }
 
+Table::Table(std::array<Player, number_players> players, Deck cards_in_table,
+		std::string deck_model) : players_{players },
+		deck_{cards_in_table },
+		id_colour_{json::load_colour_dictionary_from_file(common::decks_info_path, deck_model) },
+		value_name_{json::load_values_dictionary_from_file(common::decks_info_path, deck_model) },
+		total_card_number_{deck_.size() }
+{
+
+}
 Table::~Table()
 {
 	; //do nothing

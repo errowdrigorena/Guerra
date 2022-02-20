@@ -32,7 +32,15 @@ void Save_games_model::save_game(std::string game_name,
 
 std::vector<std::string> Save_games_model::get_saved_games_names()
 {
+	auto saved_games_names = json::get_main_nodes_in_json_file(common::saves_info_path);
+	return saved_games_names;
+}
 
+table::Table Save_games_model::load_game(std::string game_name,
+		std::string deck_model)
+{
+	auto game = json::load_game_from_file(common::saves_info_path, game_name, deck_model);
+	return game;
 }
 
 } /* namespace saved_games */

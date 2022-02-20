@@ -163,26 +163,4 @@ bool erase_node_in_json_file(const fs::path file_path,
 	return correct;
 }
 
-std::vector<card::Card> load_card_deck_from_file(const fs::path file_path,
-		const std::string deck_name)
-{
-	auto json_file = create_json_from_file(file_path);
-	auto json_deck = json_file.get_child(deck_name);
-
-	std::vector<card::Card> card_deck{};
-	for (const auto &value : json_deck.get_child("Values"))
-	{
-		for (const auto &colour : json_deck.get_child("Colours"))
-		{
-			unsigned int colour_id  = std::stoul( colour.second.data() );
-			unsigned int value_id = std::stoul( value.second.data() );
-
-			card::Card insertable{colour_id, value_id};
-			card_deck.push_back(insertable);
-		}
-	}
-
-	return card_deck;
-}
-
 } //namespace json ends

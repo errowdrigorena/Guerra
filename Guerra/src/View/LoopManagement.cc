@@ -33,4 +33,13 @@ std::string option_selector(std::vector<std::string> options)
 	return desired_option;
 }
 
+std::string option_management(std::vector<std::string> options, std::string tip)
+{
+	std::cout << tip;
+	options.push_back("salir");
+
+	auto selected_option = option_selector(options);
+
+	return selected_option;
+}
 

@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "../Common/Types.h"
+#include "../Table/Table.h"
 
 namespace saved_games {
 
@@ -27,6 +28,8 @@ public:
 	void save_game(std::string game_name, Table_snapshoot snapshoot);
 
 	std::vector<std::string> get_saved_games_names();
+
+	table::Table load_game(std::string game_name, std::string deck_model);
 
 };
 

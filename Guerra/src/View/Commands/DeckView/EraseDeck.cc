@@ -24,9 +24,8 @@ Erase_deck::~Erase_deck()
 void Erase_deck::execute()
 {
 	auto decks_options = design_controller_.get_deck_names();
-	decks_options.push_back("salir");
+	auto eraseable = option_management(decks_options, "Elija baraja para borrar \n");
 
-	auto eraseable = option_selector(decks_options);
 	if( eraseable != "salir" )
 	{
 		design_controller_.erase_deck(eraseable);

@@ -18,6 +18,7 @@ class Table_controller
 public:
 	Table_controller(std::vector<std::string> player_names,
 			std::string deck_name);
+	Table_controller(table::Table table);
 	virtual ~Table_controller();
 	Table_controller(const Table_controller &other) = default;
 	Table_controller(Table_controller &&other) = default;
