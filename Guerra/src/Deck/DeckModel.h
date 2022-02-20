@@ -21,8 +21,9 @@ public:
 	Deck_model& operator=(const Deck_model &other) = default;
 	Deck_model& operator=(Deck_model &&other) = default;
 
-	void save_deck(Deckname_values_colours deck_info);
-
+	void save_deck(Deckname_values_colours deck_info) const;
+	std::vector<std::string>  get_deck_names() const;
+	void erase_deck(std::string deck_name) const;
 };
 
 } /* namespace deck */

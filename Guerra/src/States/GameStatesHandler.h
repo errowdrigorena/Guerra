@@ -28,7 +28,10 @@ public:
 	Game_states_handler& operator=(Game_states_handler &&other) = default;
 
 	void interact_with_table();
-	std::string get_round_info();
+
+	std::string get_round_info() const;
+
+	Table_snapshoot get_game_snapshot() const;
 
 private:
 	Transition_map transition_rules_;

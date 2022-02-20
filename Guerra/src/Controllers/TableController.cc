@@ -29,4 +29,10 @@ std::string Table_controller::get_round_info()
 {
 	return state_machine_.get_round_info();
 }
+
+Table_snapshoot Table_controller::get_game_snapshot()
+{
+	return state_machine_.get_game_snapshot();
+}
+
 } /* namespace controllers */

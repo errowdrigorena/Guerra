@@ -43,9 +43,14 @@ void Game_states_handler::interact_with_table()
 	actual_state_ = transition_rules_[actual_state_->get_state()][actual_state_->get_trigger()];
 }
 
-std::string Game_states_handler::get_round_info()
+std::string Game_states_handler::get_round_info() const
 {
 	return table_model_.get_last_round_result();
+}
+
+Table_snapshoot Game_states_handler::get_game_snapshot() const
+{
+	return table_model_.get_game_snapshot();
 }
 
 } /* namespace states */

@@ -7,6 +7,7 @@
 
 #ifndef CONTROLLERS_TABLECONTROLLER_H_
 #define CONTROLLERS_TABLECONTROLLER_H_
+#include "../Common/Types.h"
 #include "../States/GameStatesHandler.h"
 #include "../Table/Table.h"
 
@@ -24,8 +25,10 @@ public:
 	Table_controller& operator=(Table_controller &&other) = default;
 
 	void perform_game_state();
+
 	std::string get_round_info();
 
+	Table_snapshoot get_game_snapshot();
 private:
 	states::Game_states_handler state_machine_;
 };

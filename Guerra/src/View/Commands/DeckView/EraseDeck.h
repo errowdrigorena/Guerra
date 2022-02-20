@@ -11,7 +11,8 @@
 #include "../../../Controllers/DeckDesignController.h"
 
 namespace view {
-namespace commands {
+namespace commands
+{
 
 class Erase_deck : public Command
 {

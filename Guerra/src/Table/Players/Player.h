@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "../../Card/Card.h"
+#include "../../Common/Types.h"
 
 using Table_deck = std::vector<card::Card>;
 using Player_deck = std::deque<card::Card>;
@@ -31,6 +32,7 @@ public:
 	unsigned short get_id() const;
 	std::string get_name() const;
 	std::size_t get_number_cards() const;
+	Name_id_deck get_snapshoot() const;
 
 	void provide_cards(const Table_deck& table_deck_chunk);
 

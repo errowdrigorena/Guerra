@@ -11,6 +11,7 @@
 
 #include "../../../Common/Command.h"
 #include "../../../Controllers/TableController.h"
+#include "../../../Controllers/SaveGamesController.h"
 
 using Table_control_shared = std::shared_ptr<controllers::Table_controller>;
 
@@ -31,6 +32,7 @@ public:
 	std::string get_description() override;
 private:
 	Table_control_shared table_controller_;
+	controllers::Save_games_controller save_games_controller_;
 };
 
 } /* namespace commands */

@@ -8,6 +8,7 @@
 #include "Table.h"
 #include "../Common/Paths.h"
 #include "../JSON/JSONOperations.h"
+#include "../JSON/JSONDeckManagement.h"
 
 #include <random>
 #include <chrono>
@@ -75,9 +76,9 @@ std::pair<std::string, card::Card> determine_winner(
 
 Table::Table(std::vector<std::string> player_names, std::string deck_model) :
 		players_{Player{1, player_names[0]}, Player{2, player_names[1]} },
-		deck_{json::load_card_deck_from_file(decks_info_path, deck_model) },
-		id_colour_{json::load_colour_dictionary_from_file(decks_info_path, deck_model) },
-		value_name_{json::load_values_dictionary_from_file(decks_info_path, deck_model) },
+		deck_{json::load_card_deck_from_file(common::decks_info_path, deck_model) },
+		id_colour_{json::load_colour_dictionary_from_file(common::decks_info_path, deck_model) },
+		value_name_{json::load_values_dictionary_from_file(common::decks_info_path, deck_model) },
 		total_card_number_{deck_.size() }
 {
 	; //do nothing
@@ -109,7 +110,7 @@ void Table::deal_cards()
 		if( player.get_id() <= extra_card_number )
 		{
 			auto card_position = (cards_in_players_deck * player_number)
-					+ player.get_id();
+					+ player.get_id() -1;
 			player_deck.push_back( deck_.at(card_position) );
 		}
 
@@ -255,6 +256,26 @@ Round_result Table::perform_round()
 std::string Table::get_last_round_result() const
 {
 	return last_round_result_;
+}
+
+Table_snapshoot Table::get_game_snapshot() const
+{
+	std::vector<Name_id_deck> snapshoot_player{};
+	Deck_table snapshoot_deck_table{};
+
+	for(auto& player : players_)
+	{
+		auto insertable = player.get_snapshoot();
+		snapshoot_player.push_back(insertable);
+	}
+
+	std::transform(deck_.begin(), deck_.end(),
+			std::back_inserter(snapshoot_deck_table),[](const card::Card& card)
+			{return Colour_value{card.get_colour(), card.get_value()}; } );
+
+	Table_snapshoot snapshoot_table
+	 {std::move(snapshoot_deck_table), std::move(snapshoot_player)};
+	return snapshoot_table;
 }
 
 }

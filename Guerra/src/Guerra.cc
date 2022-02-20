@@ -8,7 +8,8 @@ using view::commands::Deck_designer_starter;
 using view::commands::Game_starter;
 using namespace std;
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
 
 	view::View main_view{std::make_shared<Deck_designer_starter>(),
 		std::make_shared<Game_starter>()};

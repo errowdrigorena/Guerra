@@ -25,8 +25,9 @@ public:
 	Deck_design_controller& operator=(const Deck_design_controller &other) = default;
 	Deck_design_controller& operator=(Deck_design_controller &&other) = default;
 
-	void create_deck(Deckname_values_colours deck_info);
-	std::vector<std::string> get_deck_names();
+	void create_deck(Deckname_values_colours deck_info) const;
+	std::vector<std::string> get_deck_names() const;
+	void erase_deck(std::string deck_name) const;
 private:
 	deck::Deck_model deck_manager_;
 };

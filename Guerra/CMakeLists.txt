@@ -8,14 +8,21 @@ add_executable(Guerra ./src/Guerra.cc
 	./src/Common/Types.h  
 	./src/Common/Command.h
 	./src/Common/Paths.h
+	./src/Common/Paths.cc
 	./src/Controllers/DeckDesignController.h 
 	./src/Controllers/DeckDesignController.cc
 	./src/Controllers/TableController.h
 	./src/Controllers/TableController.cc
+	./src/Controllers/SaveGamesController.h
+	./src/Controllers/SaveGamesController.cc
 	./src/JSON/JSONOperations.h 
 	./src/JSON/JSONOperations.cc
+	./src/JSON/JSONDeckManagement.h
+	./src/JSON/JSONDeckManagement.cc
 	./src/Deck/DeckModel.h 
 	./src/Deck/DeckModel.cc
+	./src/SavedGames/SaveGameModel.h
+	./src/SavedGames/SaveGameModel.cc	
 	./src/Table/Table.h
 	./src/Table/Table.cc
 	./src/Table/Players/Player.h

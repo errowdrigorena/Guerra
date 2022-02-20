@@ -23,7 +23,7 @@ Possible_colours create_colours()
 		{"Introduzca un número de palos superior a 0 (numérico)" };
 	operations::check_number(check_question, number_of_colours);
 
-	std::string create_color_question{"Introduzca el nombre del color" };
+	std::string create_color_question{"Introduzca el nombre del palo" };
 	auto colors = operations::ask_multiple_values<std::string>
 					(create_color_question, number_of_colours,
 							operations::ask_value<std::string>);

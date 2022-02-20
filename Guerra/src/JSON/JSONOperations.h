@@ -14,13 +14,14 @@
 #include <boost/property_tree/json_parser.hpp>
 #include <map>
 
-#include "../Card/Card.h"
 #include "../Common/Types.h"
 
 namespace fs = std::filesystem;
 namespace bpt = boost::property_tree;
 
 using Tag_value = std::pair<std::string, int>;
+using mdvc = Manage_deckname_values_colours;
+using mpid = Manage_playername_id_deck;
 
 namespace json
 {
@@ -38,22 +39,18 @@ bpt::ptree create_json_enumeration(const std::vector<std::string> tags );
 
 bpt::ptree create_json_flat_level(const std::vector<Tag_value> tags_values );
 
-bpt::ptree create_deck_json(Deckname_values_colours deck_info);
+bpt::ptree create_saved_json(std::string saved_name, Table_snapshoot snapshoot);
 
-std::vector<std::string> get_decks_in_json_file(const fs::path file_path);
+bpt::ptree create_players_json(std::vector<Name_id_deck> players_snapshoot);
+
+std::vector<std::string> get_main_nodes_in_json_file(const fs::path file_path);
+
+bpt::ptree combine_jsons(bpt::ptree main_part, bpt::ptree aditional_part);
 
 //returns true if successful
-bool erase_deck_in_json_file(const fs::path file_path,
-		const std::string deck_name);
+bool erase_node_in_json_file(const fs::path file_path,
+		const std::string node_name);
 
-std::vector<card::Card> load_card_deck_from_file(const fs::path file_path,
-		const std::string deck_name);
-
-std::map<unsigned int, std::string> load_colour_dictionary_from_file
-	(const fs::path file_path, const std::string deck_name);
-
-std::map<unsigned int, std::string> load_values_dictionary_from_file
-	(const fs::path file_path, const std::string deck_name);
 }
 
 #endif /* JSON_JSONOPERATIONS_H_ */

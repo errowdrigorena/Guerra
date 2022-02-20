@@ -14,6 +14,7 @@
 #include <vector>
 
 #include "../Card/Card.h"
+#include "../Common/Types.h"
 #include "Players/Player.h"
 
 constexpr std::size_t number_players{2 }; //it is fixed to reduce complexity
@@ -46,6 +47,9 @@ public:
 	void perform_draw();
 
 	std::string get_last_round_result() const;
+
+	Table_snapshoot get_game_snapshot() const;
+
 private:
 	std::string notate_round(const std::map<std::string, card::Card> &round,
 			const std::pair<std::string, card::Card> &winner,

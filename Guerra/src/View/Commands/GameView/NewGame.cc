@@ -39,7 +39,7 @@ std::vector<std::string> name_players(unsigned short number_players)
 std::string chose_deck()
 {
 	std::cout << "Elija modelo de baraja " << std::endl;
-	auto decks_options = json::get_decks_in_json_file(decks_info_path);
+	auto decks_options = json::get_main_nodes_in_json_file(common::decks_info_path);
 	decks_options.push_back("salir");
 
 	auto selected_deck = option_selector(decks_options);

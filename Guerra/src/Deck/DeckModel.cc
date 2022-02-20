@@ -7,16 +7,15 @@
 
 #include "DeckModel.h"
 #include "../JSON/JSONOperations.h"
-
-void create_decks_directory();
-void create_decks_file();
+#include "../JSON/JSONDeckManagement.h"
+#include "../Common/Paths.h"
 
 namespace deck {
 
 Deck_model::Deck_model()
 {
-	create_decks_directory();
-	create_decks_file();
+	common::create_directory(common::decks_info_path.parent_path());
+	common::create_file(common::decks_info_path);
 }
 
 Deck_model::~Deck_model()
@@ -24,31 +23,21 @@ Deck_model::~Deck_model()
 	// TODO Auto-generated destructor stub
 }
 
-void save_deck(Deckname_values_colours deck_info)
+void Deck_model::save_deck(Deckname_values_colours deck_info) const
 {
-	auto path_navigator = fs::current_path()/"Decks"/"Decks_info.info";
-	auto deck = json::create_deck_json(deck_info);
+	auto deck_insertable = json::create_deck_json(deck_info);
+	json::add_json_to_file(deck_insertable, common::decks_info_path);
+}
 
+std::vector<std::string>  Deck_model::get_deck_names() const
+{
+	auto deck_names = json::get_main_nodes_in_json_file(common::decks_info_path);
+	return deck_names;
+}
 
+void Deck_model::erase_deck(std::string deck_name) const
+{
+	json::erase_node_in_json_file(common::decks_info_path, deck_name);
 }
 
 } /* namespace deck */
-
-void create_decks_file()
-{
-	auto path_navigator = fs::current_path()/"Decks"/"Decks_info.info";
-	if(fs::exists(path_navigator) == false)
-	{
-		std::ofstream file_ofstrem(path_navigator);
-		file_ofstrem.close();
-	}
-}
-
-void create_decks_directory()
-{
-	auto path_navigator = fs::current_path()/"Decks";
-	if(fs::is_directory(path_navigator) == false)
-	{
-		fs::create_directory(path_navigator);
-	}
-}

@@ -12,12 +12,6 @@
 #include <boost/property_tree/ptree_fwd.hpp>
 #include <algorithm>
 
-using mdvc = Manage_deckname_values_colours;
-Tag_value from_name_value_to_tag_value(Value_name transformable);
-std::map<unsigned int, std::string> load_dictionary_from_file
-	(const fs::path file_path, const std::string deck_name,
-	 const std::string of_what);
-
 namespace json
 {
 
@@ -40,15 +34,37 @@ std::stringstream read_file(const fs::path file_path)
 	return file_readed;
 }
 
+bpt::ptree combine_jsons(bpt::ptree main_part, bpt::ptree aditional_part)
+{
+	try
+	{
+		for (const auto &node : aditional_part.get_child(""))
+		{
+			auto tag = node.first.data();
+			auto value = node.second;
+
+			main_part.put_child(tag, value);
+		}
+	}
+	catch(const bpt::ptree_error& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	return main_part;
+}
+
 void add_json_to_file(bpt::ptree addable, const fs::path file_path)
 {
-	std::stringstream jsonString{};
+	std::stringstream json_string;
 
 	try
 	{
-		bpt::write_json(jsonString, addable);
+		bpt::ptree all_jsons = create_json_from_file(file_path);
+		all_jsons = combine_jsons(all_jsons, addable);
+		bpt::write_json(json_string, all_jsons);
 		std::ofstream file_ofstrem(file_path);
-		file_ofstrem << jsonString.rdbuf();
+		file_ofstrem << json_string.rdbuf();
 		file_ofstrem.close();
 	}
 	catch(const bpt::ptree_error& e)
@@ -108,52 +124,83 @@ bpt::ptree create_json_flat_level(const std::vector<Tag_value> tags_values )
 	return json_tag_values;
 }
 
-bpt::ptree create_deck_json(Deckname_values_colours deck_info)
+bpt::ptree create_card_array_json(std::vector<Colour_value> cards)
 {
-	auto title_deck = std::get<static_cast<int>(mdvc::DECKNAME)>(deck_info);
-	auto colours_deck = std::get<static_cast<int>(mdvc::COLOURS)>(deck_info);
-	auto values_names_deck = std::get<static_cast<int>(mdvc::VALUES)>(deck_info);
+	bpt::ptree card_array{};
 
-	std::vector<Tag_value> tag_values_deck{};
-	std::transform(values_names_deck.begin(), values_names_deck.end(),
-			std::back_inserter(tag_values_deck), from_name_value_to_tag_value);
+	for(auto& colour_value : cards)
+	{
+		bpt::ptree colour_value_json{};
+		colour_value_json.put("Color", colour_value.first);
+		colour_value_json.put("Valor", colour_value.second);
 
-	auto names_values_json = create_json_flat_level(tag_values_deck);
-	auto colour_enum_json = create_json_enumeration(colours_deck);
-	bpt::ptree deck_json{};
+		card_array.push_back({"", colour_value_json });
+	}
 
-	std::string colour_child_tag = title_deck + ".Colours";
-	std::string  values_child_tag = title_deck + ".Colours";
-
-	deck_json.put_child(colour_child_tag, colour_enum_json);
-	deck_json.put_child(values_child_tag, names_values_json);
-
-	return deck_json;
+	return card_array;
 }
 
-std::vector<std::string> get_decks_in_json_file(const fs::path file_path)
+bpt::ptree create_players_json(std::vector<Name_id_deck> players_snapshoot)
+{
+	bpt::ptree players_json{};
+	//bpt::ptree saved_game_child{};
+	for(auto& player_info : players_snapshoot)
+	{
+		bpt::ptree player_json{};
+
+		auto name = std::get<static_cast<int>(mpid::PLAYERNAME)>(player_info);
+		auto id = std::get<static_cast<int>(mpid::ID)>(player_info);
+		auto deck = std::get<static_cast<int>(mpid::DECK)>(player_info);
+
+		auto deck_json = create_card_array_json(deck);
+
+		std::string id_child_tag = "Id";
+		std::string  deck_child_tag = "Deck";
+
+		player_json.put(id_child_tag, id);
+		player_json.put_child(deck_child_tag, deck_json);
+
+		players_json.push_back({name, player_json});
+	}
+
+	return players_json;
+}
+
+bpt::ptree create_saved_json(std::string saved_name, Table_snapshoot snapshoot)
+{
+	bpt::ptree saved_game_json{};
+
+	auto players_json = create_players_json(snapshoot.second);
+
+	std::string players_child_tag = saved_name +".Players";
+
+	saved_game_json.put_child(saved_name, players_json);
+	return saved_game_json;
+}
+
+std::vector<std::string> get_main_nodes_in_json_file(const fs::path file_path)
 {
 	std::vector<std::string> deck_names{};
 	auto json = create_json_from_file(file_path);
 
-	for (const auto &book : json.get_child(""))
+	for (const auto &node : json.get_child(""))
 	{
-		auto insertable = book.first.data();
+		auto insertable = node.first.data();
 		deck_names.push_back(insertable);
 	}
 
 	return deck_names;
 }
 
-bool erase_deck_in_json_file(const fs::path file_path,
-		const std::string deck_name)
+bool erase_node_in_json_file(const fs::path file_path,
+		const std::string node_name)
 {
 	auto json = create_json_from_file(file_path);
 	bool correct{false };
 
 	try
 	{
-		json.erase(deck_name);
+		json.erase(node_name);
 		correct = true;
 		create_file_from_json(json, file_path);
 	}
@@ -187,42 +234,4 @@ std::vector<card::Card> load_card_deck_from_file(const fs::path file_path,
 	return card_deck;
 }
 
-std::map<unsigned int, std::string> load_colour_dictionary_from_file
-	(const fs::path file_path, const std::string deck_name)
-{
-	auto dictionary = load_dictionary_from_file(file_path, deck_name, "Colours");
-	return dictionary;
-}
-
-std::map<unsigned int, std::string> load_values_dictionary_from_file
-	(const fs::path file_path, const std::string deck_name)
-{
-	auto dictionary = load_dictionary_from_file(file_path, deck_name, "Values");
-	return dictionary;
-}
-
 } //namespace json ends
-
-Tag_value from_name_value_to_tag_value(Value_name transformable)
-{
-
-	return{transformable.second, transformable.first};
-}
-
-std::map<unsigned int, std::string> load_dictionary_from_file
-	(const fs::path file_path, const std::string deck_name,
-	 const std::string of_what)
-{
-	auto json_file = json::create_json_from_file(file_path);
-	auto json_deck = json_file.get_child(deck_name);
-
-	std::map<unsigned int, std::string> dictionary;
-
-	for (const auto &colour : json_deck.get_child(of_what) )
-	{
-		unsigned int key = std::stoul( colour.second.data() );
-		dictionary[key] = colour.first.data();
-	}
-
-	return dictionary;
-}

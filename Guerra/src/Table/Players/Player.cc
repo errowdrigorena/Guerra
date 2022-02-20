@@ -40,6 +40,18 @@ void Player::provide_cards(const Table_deck& table_deck_chunk)
 			[&](card::Card card){ deck_.push_back(card); });
 }
 
+Name_id_deck Player::get_snapshoot() const
+{
+	Deck_players deck{};
+	for(auto& card : deck_)
+	{
+		Colour_value colour_value{card.get_colour(), card.get_value() };
+		deck.push_back(colour_value);
+	}
+
+	Name_id_deck snapshoot{name_, id_, deck};
+	return snapshoot;
+}
 card::Card Player::play_card()
 {
 	auto card_to_play = deck_.front();
