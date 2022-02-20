@@ -8,7 +8,7 @@
 #ifndef CONTROLLERS_SAVEGAMESCONTROLLER_H_
 #define CONTROLLERS_SAVEGAMESCONTROLLER_H_
 #include "../Common/Types.h"
-#include "../SavedGames/SaveGameModel.h"
+#include "../SavedGames/SaveGamesModel.h"
 
 namespace controllers {
 
@@ -25,7 +25,7 @@ public:
 	std::vector<std::string> get_saved_games_names();
 	void save_game(std::string game_name, Table_snapshoot snapshoot );
 private:
-	saved_games::Save_game_model save_game_model_;
+	saved_games::Save_games_model save_game_model_;
 };
 
 } /* namespace controllers */

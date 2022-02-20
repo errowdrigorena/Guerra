@@ -19,10 +19,12 @@ add_executable(Guerra ./src/Guerra.cc
 	./src/JSON/JSONOperations.cc
 	./src/JSON/JSONDeckManagement.h
 	./src/JSON/JSONDeckManagement.cc
+	./src/JSON/JSONSavedGame.h
+	./src/JSON/JSONSavedGame.cc
 	./src/Deck/DeckModel.h 
 	./src/Deck/DeckModel.cc
-	./src/SavedGames/SaveGameModel.h
-	./src/SavedGames/SaveGameModel.cc	
+	./src/SavedGames/SaveGamesModel.h
+	./src/SavedGames/SaveGamesModel.cc	
 	./src/Table/Table.h
 	./src/Table/Table.cc
 	./src/Table/Players/Player.h

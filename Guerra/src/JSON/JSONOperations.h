@@ -39,10 +39,6 @@ bpt::ptree create_json_enumeration(const std::vector<std::string> tags );
 
 bpt::ptree create_json_flat_level(const std::vector<Tag_value> tags_values );
 
-bpt::ptree create_saved_json(std::string saved_name, Table_snapshoot snapshoot);
-
-bpt::ptree create_players_json(std::vector<Name_id_deck> players_snapshoot);
-
 std::vector<std::string> get_main_nodes_in_json_file(const fs::path file_path);
 
 bpt::ptree combine_jsons(bpt::ptree main_part, bpt::ptree aditional_part);
