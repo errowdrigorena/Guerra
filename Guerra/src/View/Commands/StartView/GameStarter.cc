@@ -5,12 +5,12 @@
  *      Author: iban
  */
 
-#include "GameStarter.h"
+#include <View/Commands/StartView/GameStarter.h>
 
-#include "../../LoopManagement.h"
-#include "../../View.h"
-#include "../GameView/LoadGame.h"
-#include "../GameView/NewGame.h"
+#include <View/LoopManagement.h>
+#include <View/View.h>
+#include <View/Commands/GameView/LoadGame.h>
+#include <View/Commands/GameView/NewGame.h>
 
 namespace view {
 namespace commands {

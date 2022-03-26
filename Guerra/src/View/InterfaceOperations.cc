@@ -5,7 +5,7 @@
  *      Author: iban
  */
 
-#include "InterfaceOperations.h"
+#include <View/InterfaceOperations.h>
 
 namespace view
 {

@@ -5,12 +5,13 @@
  *      Author: iban
  */
 
-#include "LoadGame.h"
-#include "../../LoopManagement.h"
-#include "../../../Controllers/TableController.h"
-#include "../../View.h"
-#include "PlayRound.h"
-#include "SaveGame.h"
+#include <View/Commands/GameView/LoadGame.h>
+
+#include <View/LoopManagement.h>
+#include <Controllers/TableController.h>
+#include <View/View.h>
+#include <View/Commands/GameView/PlayRound.h>
+#include <View/Commands/GameView/SaveGame.h>
 
 #include <memory>
 

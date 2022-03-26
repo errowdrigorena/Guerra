@@ -5,7 +5,7 @@
  *      Author: iban
  */
 
-#include "DealState.h"
+#include <States/DealState.h>
 
 namespace states {
 

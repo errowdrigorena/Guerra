@@ -5,7 +5,8 @@
  *      Author: iban
  */
 
-#include "SaveGame.h"
+#include <View/Commands/GameView/SaveGame.h>
+
 #include <iostream>
 
 namespace view {

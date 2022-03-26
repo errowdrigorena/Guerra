@@ -5,7 +5,7 @@
  *      Author: iban
  */
 
-#include "Card.h"
+#include <Card/Card.h>
 
 namespace card
 {

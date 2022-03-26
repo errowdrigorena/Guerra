@@ -5,7 +5,7 @@
  *      Author: iban
  */
 
-#include "EndGameState.h"
+#include <States/EndGameState.h>
 
 namespace states {
 

@@ -5,10 +5,10 @@
  *      Author: iban
  */
 
-#include "Table.h"
-#include "../Common/Paths.h"
-#include "../JSON/JSONOperations.h"
-#include "../JSON/JSONDeckManagement.h"
+#include <Table/Table.h>
+#include <Common/Paths.h>
+#include <JSON/JSONOperations.h>
+#include <JSON/JSONDeckManagement.h>
 
 #include <random>
 #include <chrono>

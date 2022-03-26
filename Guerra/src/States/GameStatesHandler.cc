@@ -5,12 +5,12 @@
  *      Author: iban
  */
 
-#include "GameStatesHandler.h"
+#include <States/GameStatesHandler.h>
 
-#include "DealState.h"
-#include "DrawState.h"
-#include "EndGameState.h"
-#include "RoundState.h"
+#include <States/DealState.h>
+#include <States/DrawState.h>
+#include <States/EndGameState.h>
+#include <States/RoundState.h>
 
 namespace states {
 

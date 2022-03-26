@@ -5,7 +5,7 @@
  *      Author: iban
  */
 
-#include "TableController.h"
+#include <Controllers/TableController.h>
 
 namespace controllers {
 

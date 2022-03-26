@@ -5,12 +5,12 @@
  *      Author: iban
  */
 
-#include "DeckDesignerStarter.h"
+#include <View/Commands/StartView/DeckDesignerStarter.h>
+#include <View/LoopManagement.h>
+#include <View/View.h>
+#include <View/Commands/DeckView/CreateDeck.h>
+#include <View/Commands/DeckView/EraseDeck.h>
 
-#include "../../LoopManagement.h"
-#include "../../View.h"
-#include "../DeckView/CreateDeck.h"
-#include "../DeckView/EraseDeck.h"
 namespace view {
 namespace commands {
 

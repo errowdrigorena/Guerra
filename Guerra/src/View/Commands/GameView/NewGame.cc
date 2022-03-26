@@ -5,18 +5,18 @@
  *      Author: iban
  */
 
-#include "NewGame.h"
+#include <View/Commands/GameView/NewGame.h>
 
 #include <iostream>
 #include <memory>
 #include <vector>
 
-#include "../../../JSON/JSONOperations.h"
-#include "../../../Common/Paths.h"
-#include "../../LoopManagement.h"
-#include "../../View.h"
-#include "PlayRound.h"
-#include "SaveGame.h"
+#include <JSON/JSONOperations.h>
+#include <Common/Paths.h>
+#include <View/LoopManagement.h>
+#include <View/View.h>
+#include <View/Commands/GameView/PlayRound.h>
+#include <View/Commands/GameView/SaveGame.h>
 
 namespace
 {

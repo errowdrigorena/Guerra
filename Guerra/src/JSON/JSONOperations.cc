@@ -4,15 +4,15 @@
  *  Created on: Feb 13, 2022
  *      Author: iban
  */
-#include "JSONOperations.h"
-#include "../Card/Card.h"
+#include <JSON/JSONOperations.h>
+#include <Card/Card.h>
 
 #include <iostream>
 #include <fstream>
 #include <boost/property_tree/ptree_fwd.hpp>
 #include <algorithm>
 
-#include "../Common/Paths.h"
+#include <Common/Paths.h>
 namespace json
 {
 

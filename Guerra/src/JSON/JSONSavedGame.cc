@@ -4,7 +4,7 @@
  *  Created on: Feb 20, 2022
  *      Author: iban
  */
-#include "JSONSavedGame.h"
+#include <JSON/JSONSavedGame.h>
 
 #include <iostream>
 namespace json

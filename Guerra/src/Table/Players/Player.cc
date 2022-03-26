@@ -5,12 +5,12 @@
  *      Author: iban
  */
 
-#include "Player.h"
+#include <Table/Players/Player.h>
 
 #include <algorithm>
 namespace table {
 
-Player::Player(unsigned short id, std::string name) : id_{id }, name_{name }
+Player::Player(unsigned short id, std::string name) : id_{id }, name_{name }, deck_{}
 {
 	; //do nothing
 }

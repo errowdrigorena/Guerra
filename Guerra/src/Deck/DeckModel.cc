@@ -5,10 +5,10 @@
  *      Author: iban
  */
 
-#include "DeckModel.h"
-#include "../JSON/JSONOperations.h"
-#include "../JSON/JSONDeckManagement.h"
-#include "../Common/Paths.h"
+#include <Deck/DeckModel.h>
+#include <JSON/JSONOperations.h>
+#include <JSON/JSONDeckManagement.h>
+#include <Common/Paths.h>
 
 namespace deck {
 

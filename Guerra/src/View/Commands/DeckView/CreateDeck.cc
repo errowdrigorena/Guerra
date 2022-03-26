@@ -5,11 +5,12 @@
  *      Author: iban
  */
 
-#include "CreateDeck.h"
+#include <View/Commands/DeckView/CreateDeck.h>
 
-#include "../../../Common/Types.h"
-#include "../../../Common/Paths.h"
-#include "../../InterfaceOperations.h"
+#include <Common/Types.h>
+#include <Common/Paths.h>
+#include <View/InterfaceOperations.h>
+
 namespace operations = view::interface_operations;
 
 namespace

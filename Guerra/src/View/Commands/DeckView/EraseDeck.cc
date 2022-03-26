@@ -5,8 +5,8 @@
  *      Author: iban
  */
 
-#include "EraseDeck.h"
-#include "../../LoopManagement.h"
+#include <View/Commands/DeckView/EraseDeck.h>
+#include <View/LoopManagement.h>
 
 namespace view {
 namespace commands {

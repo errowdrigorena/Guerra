@@ -5,9 +5,9 @@
  *      Author: iban
  */
 
-#include "../JSON/JSONSavedGame.h"
-#include "../Common/Paths.h"
-#include "SaveGamesModel.h"
+#include <JSON/JSONSavedGame.h>
+#include <Common/Paths.h>
+#include <SavedGames/SaveGamesModel.h>
 
 namespace saved_games
 {

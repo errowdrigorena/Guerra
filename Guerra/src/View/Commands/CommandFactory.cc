@@ -5,7 +5,7 @@
  *      Author: iban
  */
 
-#include "CommandFactory.h"
+#include <View/Commands/CommandFactory.h>
 
 namespace view
 {

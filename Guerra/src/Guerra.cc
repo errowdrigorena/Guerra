@@ -1,8 +1,8 @@
-#include "JSON/JSONOperations.h"
-#include "View/Commands/StartView/DeckDesignerStarter.h"
-#include "View/Commands/StartView/GameStarter.h"
-#include "View/LoopManagement.h"
-#include "View/View.h"
+#include <JSON/JSONOperations.h>
+#include <View/Commands/StartView/DeckDesignerStarter.h>
+#include <View/Commands/StartView/GameStarter.h>
+#include <View/LoopManagement.h>
+#include <View/View.h>
 
 using view::commands::Deck_designer_starter;
 using view::commands::Game_starter;

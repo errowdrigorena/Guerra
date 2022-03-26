@@ -5,8 +5,8 @@
  *      Author: iban
  */
 
-#include "SaveGamesController.h"
-#include "../Common/Paths.h"
+#include <Controllers/SaveGamesController.h>
+#include <Common/Paths.h>
 
 namespace controllers {
 
