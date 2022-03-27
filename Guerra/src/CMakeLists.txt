@@ -1,0 +1,11 @@
+add_subdirectory(Card)
+add_subdirectory(Common)
+add_subdirectory(Controllers)
+add_subdirectory(Deck)
+add_subdirectory(JSON)
+add_subdirectory(SavedGames)
+add_subdirectory(States)
+add_subdirectory(Table)
+add_subdirectory(View)
+
+target_sources(Src PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Guerra.cc")

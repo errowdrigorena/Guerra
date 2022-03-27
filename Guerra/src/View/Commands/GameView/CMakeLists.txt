@@ -1,0 +1,4 @@
+target_sources(Src PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/LoadGame.cc"
+"${CMAKE_CURRENT_SOURCE_DIR}/NewGame.cc"
+"${CMAKE_CURRENT_SOURCE_DIR}/PlayRound.cc"
+"${CMAKE_CURRENT_SOURCE_DIR}/SaveGame.cc")
